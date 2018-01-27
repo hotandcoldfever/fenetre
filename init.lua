@@ -217,16 +217,15 @@ local function fenetre(args)
                 if c == client.focus then
                     title = nil
                     if c.name then
-                        title = escape(c.name)
+                        title = c.name
                     elseif c.class then
-                        title = escape(c.class)
+                        title = c.class
                     end
 
                     if args.title_edit then args.title_edit() end
 
                     if title then
                         client_title.widget.markup = string.format("<span font='%s' foreground='%s'>%s</span>", font, color, escape(title))
-                        -- escape(title) again in case the user adds any special characters thru title_edit
                     end
                 end
             end
@@ -238,7 +237,16 @@ local function fenetre(args)
             client.connect_signal("unfocus", function() client_title.widget.text = "" end)
 
         elseif part == "separator" then
-            local separator = textbox()
+            local separator_rotation
+            if args.rotation == "left" then
+                separator_rotation = "east"
+            elseif args.rotation == "right" then
+                separator_rotation = "west"
+            else
+                separator_rotation = "north"
+            end
+
+            local separator = rotate(textbox(), separator_rotation)
             local font = args.separator_font or args.title_font or nil
             local color = args.separator_color or args.title_color or "#FFFFFF"
             local text = escape(args.separator) or " "
@@ -246,9 +254,9 @@ local function fenetre(args)
             titlebar:add(separator)
 
             client.connect_signal("focus", function()
-                separator.markup = string.format("<span font='%s' foreground='%s'>%s</span>", font, color, text)
+                separator.widget.markup = string.format("<span font='%s' foreground='%s'>%s</span>", font, color, text)
             end)
-            client.connect_signal("unfocus", function() separator.text = "" end)
+            client.connect_signal("unfocus", function() separator.widget.text = "" end)
         end
     end
 
