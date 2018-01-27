@@ -29,17 +29,17 @@ Argument | Use | Type | Default
 `order` | Elements to create + order to show them in | table of strings | `{ "close", "max", "ontop", "sticky", "floating", "separator", "title" }`
 `rotation` | If set to `left` or `right` the elements're arranged for a vertical wibar + the title's rotated facing left or right. If not set to `left` or `right` they're arranged for a horizontal wibar | string | None
 `clickable` | Allow clicking the buttons to change the corresponding client property | boolean | true
-`icons_dir` | Where to look for the icons to use | string | path_to_widget/icons/
-`close_icon` | Path of image to use for the close button | string | icons_dir/close.png
-`ontop_icon` | Path of image to use for the ontop button when the client's ontop | string | icons_dir/ontop.png
-`ontop_off_icon` | Path of image to use for the ontop button when the client's not ontop | string | icons_dir/ontop_off.png
-`sticky_icon` | Path of image to use for the sticky button when the client's sticky | string | icons_dir/sticky.png
-`sticky_off_icon` | Path of image to use for the sticky button when the client's not sticky | string | icons_dir/sticky_off.png
-`floating_icon` | Path of image to use for the floating button when the client's floating | string | icons_dir/floating.png
-`floating_off_icon` | Path of image to use for the floating button when the client's not floating | string | icons_dir/floating_off.png
-`max_icon` | Path of image to use for the maximise button when the client's fully maximised | string | icons_dir/max.png
-`max_partial_icon` | Path of image to use for the maximise button when the client's only vertically or horizontally maximised | string | icons_dir/max_partial.png
-`max_off_icon` | Path of image to use for the maximise button when the client's not maximised | string | icons_dir/max_off.png
+`icons_path` | Where to look for the icons to use | string | path_to_widget/icons/
+`close_icon` | Path of image to use for the close button | string | icons_path/close.png
+`ontop_icon` | Path of image to use for the ontop button when the client's ontop | string | icons_path/ontop.png
+`ontop_off_icon` | Path of image to use for the ontop button when the client's not ontop | string | icons_path/ontop_off.png
+`sticky_icon` | Path of image to use for the sticky button when the client's sticky | string | icons_path/sticky.png
+`sticky_off_icon` | Path of image to use for the sticky button when the client's not sticky | string | icons_path/sticky_off.png
+`floating_icon` | Path of image to use for the floating button when the client's floating | string | icons_path/floating.png
+`floating_off_icon` | Path of image to use for the floating button when the client's not floating | string | icons_path/floating_off.png
+`max_icon` | Path of image to use for the maximise button when the client's fully maximised | string | icons_path/max.png
+`max_partial_icon` | Path of image to use for the maximise button when the client's only vertically or horizontally maximised | string | icons_path/max_partial.png
+`max_off_icon` | Path of image to use for the maximise button when the client's not maximised | string | icons_path/max_off.png
 `mouse_button` | Mouse button to use for clicking | number | 1
 `max_vert_button` | Mouse button to use for toggle un/maximising the client vertically using the maximise button. If set to `Shift` or `Control` or `Alt` or `Mod4`, then `mouse_button` plus the specified key're used together | number or string | 2
 `max_horiz_button` | Mouse button to use for toggle un/maximising the client horizontally. If set to `Shift` or `Control` or `Alt` or `Mod4`, then `mouse_button` plus the specified key're used together | number or string | 3
@@ -68,7 +68,7 @@ local titlebar = fenetre {
     title_font = theme.font,
     title_color = theme.fg_normal,
     title_edit = function()
-        -- Remove " - Mozilla Firefox from the end of firefox's titles"
+        -- Remove " - Mozilla Firefox" from the ends of firefox's titles
         local firefox = " - Mozilla Firefox"
         local pri_brow = firefox .. " (Private Browsing)"
         if title:sub(-firefox:len()) == firefox or title:sub(-pri_brow:len()) == pri_brow then
@@ -127,7 +127,7 @@ local titlebar = fenetre {
 local titlebar = fenetre {
     rotation = "left",
     clickable = false,
-    icons_dir = theme.dir .. "icons/",
+    icons_path = theme.dir .. "icons/",
     order = { "sticky", "floating", "ontop" }
 }
 ```
