@@ -1,0 +1,26 @@
+/* XPM */
+static char *sticky_off[] = {
+/* columns rows colors chars-per-pixel */
+"18 18 2 1 ",
+"  c None",
+". c #7ED68D",
+/* pixels */
+"                  ",
+"                  ",
+"                  ",
+"                  ",
+"                  ",
+"                  ",
+"      ..  ..      ",
+"      ..  ..      ",
+"                  ",
+"                  ",
+"      ..  ..      ",
+"      ..  ..      ",
+"                  ",
+"                  ",
+"                  ",
+"                  ",
+"                  ",
+"                  "
+};
