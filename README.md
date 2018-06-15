@@ -30,16 +30,16 @@ Argument | Use | Type | Default
 `rotation` | If set to `left` or `right` the elements're arranged for a vertical wibar + the title's rotated facing left or right. If not set to `left` or `right` they're arranged for a horizontal wibar | string | None
 `clickable` | Allow clicking the buttons to change the corresponding client property | boolean | true
 `icons_path` | Where to look for the icons to use | string | path_to_widget/icons/
-`close_icon` | Path of image to use for the close button | string | icons_path/close.png
-`ontop_icon` | Path of image to use for the ontop button when the client's ontop | string | icons_path/ontop.png
-`ontop_off_icon` | Path of image to use for the ontop button when the client's not ontop | string | icons_path/ontop_off.png
-`sticky_icon` | Path of image to use for the sticky button when the client's sticky | string | icons_path/sticky.png
-`sticky_off_icon` | Path of image to use for the sticky button when the client's not sticky | string | icons_path/sticky_off.png
-`floating_icon` | Path of image to use for the floating button when the client's floating | string | icons_path/floating.png
-`floating_off_icon` | Path of image to use for the floating button when the client's not floating | string | icons_path/floating_off.png
-`max_icon` | Path of image to use for the maximise button when the client's fully maximised | string | icons_path/max.png
-`max_partial_icon` | Path of image to use for the maximise button when the client's only vertically or horizontally maximised | string | icons_path/max_partial.png
-`max_off_icon` | Path of image to use for the maximise button when the client's not maximised | string | icons_path/max_off.png
+`close_icon` | Path of image to use for the close button | string | icons_path/close.xpm
+`ontop_icon` | Path of image to use for the ontop button when the client's ontop | string | icons_path/ontop.xpm
+`ontop_off_icon` | Path of image to use for the ontop button when the client's not ontop | string | icons_path/ontop_off.xpm
+`sticky_icon` | Path of image to use for the sticky button when the client's sticky | string | icons_path/sticky.xpm
+`sticky_off_icon` | Path of image to use for the sticky button when the client's not sticky | string | icons_path/sticky_off.xpm
+`floating_icon` | Path of image to use for the floating button when the client's floating | string | icons_path/floating.xpm
+`floating_off_icon` | Path of image to use for the floating button when the client's not floating | string | icons_path/floating_off.xpm
+`max_icon` | Path of image to use for the maximise button when the client's fully maximised | string | icons_path/max.xpm
+`max_partial_icon` | Path of image to use for the maximise button when the client's only vertically or horizontally maximised | string | icons_path/max_partial.xpm
+`max_off_icon` | Path of image to use for the maximise button when the client's not maximised | string | icons_path/max_off.xpm
 `mouse_button` | Mouse button to use for clicking | number | 1
 `max_vert_button` | Mouse button to use for toggle un/maximising the client vertically using the maximise button. If set to `Shift` or `Control` or `Alt` or `Mod4`, then `mouse_button` plus the specified key're used together | number or string | 2
 `max_horiz_button` | Mouse button to use for toggle un/maximising the client horizontally. If set to `Shift` or `Control` or `Alt` or `Mod4`, then `mouse_button` plus the specified key're used together | number or string | 3
@@ -51,12 +51,11 @@ Argument | Use | Type | Default
 `separator_color` | Colour to use for the separator if it's visible | string | "#FFFFFF" or `title_color` if it's set
 
 ## Notes
-The default icons're included in png + xpm format for easy customisation. You can quickly change the colours using bash/zsh, sed, + imagemagick:
+The default icons're included in xpm format for easy customisation. You can quickly change the colours using bash/zsh, sed, + imagemagick:
 ```bash
 cd path_to_widget/icons
 sed -i "s,#7ED68D,new_colour," {close,max_partial,*_off}.xpm
 sed -i "s,white,new_colour," {ontop,sticky,floating,max}.xpm
-for icon in *.xpm; do convert $icon ${icon%.xpm}.png; done
 ```
 The default icons were originally sourced from https://github.com/lcpz/awesome-copycats + are the same designs except for the ontop icons, which were slightly modified
 

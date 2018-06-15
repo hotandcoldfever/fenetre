@@ -29,7 +29,7 @@ local function fenetre(args)
     for _, part in ipairs(order) do -- Only show elements included in order
         if part == "close" then
             local close_button = imagebox()
-            local close_icon = args.close_icon or icons_path .. "close.png"
+            local close_icon = args.close_icon or icons_path .. "close.xpm"
 
             titlebar:add(close_button)
 
@@ -44,8 +44,8 @@ local function fenetre(args)
 
         elseif part == "ontop" then
             local ontop_button = imagebox()
-            local ontop_icon = args.ontop_icon or icons_path .. "ontop.png"
-            local ontop_off_icon = args.ontop_off_icon or icons_path .. "ontop_off.png"
+            local ontop_icon = args.ontop_icon or icons_path .. "ontop.xpm"
+            local ontop_off_icon = args.ontop_off_icon or icons_path .. "ontop_off.xpm"
 
             local function update_ontop(c)
                 if c == client.focus then
@@ -74,8 +74,8 @@ local function fenetre(args)
 
         elseif part == "sticky" then
             local sticky_button = imagebox()
-            local sticky_icon = args.sticky_icon or icons_path .. "sticky.png"
-            local sticky_off_icon = args.sticky_off_icon or icons_path .. "sticky_off.png"
+            local sticky_icon = args.sticky_icon or icons_path .. "sticky.xpm"
+            local sticky_off_icon = args.sticky_off_icon or icons_path .. "sticky_off.xpm"
 
             local function update_sticky(c)
                 if c == client.focus then
@@ -104,8 +104,8 @@ local function fenetre(args)
 
         elseif part == "floating" then
             local floating_button = imagebox()
-            local floating_icon = args.floating_icon or icons_path .. "floating.png"
-            local floating_off_icon = args.floating_off_icon or icons_path .. "floating_off.png"
+            local floating_icon = args.floating_icon or icons_path .. "floating.xpm"
+            local floating_off_icon = args.floating_off_icon or icons_path .. "floating_off.xpm"
 
             local function update_floating(c)
                 if c == client.focus then
@@ -134,9 +134,9 @@ local function fenetre(args)
 
         elseif part == "max" then
             local max_button = imagebox()
-            local max_icon = args.max_icon or icons_path .. "max.png"
-            local max_partial_icon = args.max_partial_icon or icons_path .. "max_partial.png"
-            local max_off_icon = args.max_off_icon or icons_path .. "max_off.png"
+            local max_icon = args.max_icon or icons_path .. "max.xpm"
+            local max_partial_icon = args.max_partial_icon or icons_path .. "max_partial.xpm"
+            local max_off_icon = args.max_off_icon or icons_path .. "max_off.xpm"
 
             local function update_max(c)
                 if c == client.focus then
