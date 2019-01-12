@@ -1,3 +1,4 @@
+local beautiful = require("beautiful")
 local layout = require("wibox.layout").fixed
 local imagebox = require("wibox.widget").imagebox
 local textbox = require("wibox.widget").textbox
@@ -210,8 +211,6 @@ local function fenetre(args)
             end
 
             local client_title = rotate(textbox(), title_rotation)
-            local font = args.title_font or nil
-            local color = args.title_color or "#FFFFFF"
 
             local function update_title(c)
                 if c == client.focus then
@@ -225,7 +224,7 @@ local function fenetre(args)
                     if args.title_edit then args.title_edit() end
 
                     if title then
-                        client_title.widget.markup = string.format("<span font='%s' foreground='%s'>%s</span>", font, color, escape(title))
+                        client_title.widget.markup = string.format("<span font='%s' foreground='%s'>%s</span>", beautiful.font, beautiful.titlebar_fg_focus or beautiful.fg_focus, escape(title))
                     end
                 end
             end
@@ -247,14 +246,12 @@ local function fenetre(args)
             end
 
             local separator = rotate(textbox(), separator_rotation)
-            local font = args.separator_font or args.title_font or nil
-            local color = args.separator_color or args.title_color or "#FFFFFF"
             local text = escape(args.separator) or " "
 
             titlebar:add(separator)
 
             client.connect_signal("focus", function()
-                separator.widget.markup = string.format("<span font='%s' foreground='%s'>%s</span>", font, color, text)
+                separator.widget.markup = string.format("<span font='%s' foreground='%s'>%s</span>", beautiful.font, beautiful.titlebar_separator or beautiful.titlebar_fg_focus or beautiful.fg_focus, text)
             end)
             client.connect_signal("unfocus", function() separator.widget.text = "" end)
         end
