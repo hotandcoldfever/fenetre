@@ -38,23 +38,26 @@ Argument | Use | Type | Default
 `floating_icon` | Path of image to use for the floating button when the client's floating | string | icons_path/floating.xpm
 `floating_off_icon` | Path of image to use for the floating button when the client's not floating | string | icons_path/floating_off.xpm
 `max_icon` | Path of image to use for the maximise button when the client's fully maximised | string | icons_path/max.xpm
-`max_partial_icon` | Path of image to use for the maximise button when the client's only vertically or horizontally maximised | string | icons_path/max_partial.xpm
+`max_horizontal_icon` | Path of image to use for the maximise button when the client's only horizontally maximised | string | icons_path/max_horizontal.xpm
+`max_vertical_icon` | Path of image to use for the maximise button when the client's only vertically maximised | string | icons_path/max_vertical.xpm
 `max_off_icon` | Path of image to use for the maximise button when the client's not maximised | string | icons_path/max_off.xpm
 `mouse_button` | Mouse button to use for clicking | number | 1
 `max_vert_button` | Mouse button to use for toggle un/maximising the client vertically using the maximise button. If set to `Shift` or `Control` or `Alt` or `Mod4`, then `mouse_button` plus the specified key're used together | number or string | 2
 `max_horiz_button` | Mouse button to use for toggle un/maximising the client horizontally. If set to `Shift` or `Control` or `Alt` or `Mod4`, then `mouse_button` plus the specified key're used together | number or string | 3
-`title_font` | Font + size to use for the title | string | None, using awesome's default
-`title_color` | Colour to use for the title | string | "#FFFFFF"
 `title_edit` | Function to use to edit the title | function | None
 `separator` | Text to use as a separator | string | " "
-`separator_font` | Font + size to use for the separator if it's visible | string | None or `title_font` if it's set
-`separator_color` | Colour to use for the separator if it's visible | string | "#FFFFFF" or `title_color` if it's set
+
+The title and separator's font's controlled by the value of theme.font in the awesome theme
+
+The title colour's controlled by 1 of the following, listed in order of precedence: theme.titlebar_fg_focus, theme.fg_focus
+
+The separator's colour's controlled by 1 of the following, listed in order of precedence: theme.titlebar_separator, theme.titlebar_fg_focus, theme.fg_focus
 
 ## Notes
 The default icons're included in xpm format for easy customisation. You can quickly change the colours using bash/zsh, sed, + imagemagick:
 ```bash
 cd path_to_widget/icons
-sed -i "s,#7ED68D,new_colour," {close,max_partial,*_off}.xpm
+sed -i "s,#7ED68D,new_colour," {close,max_vertical,*_off}.xpm
 sed -i "s,white,new_colour," {ontop,sticky,floating,max}.xpm
 ```
 The default icons were originally sourced from https://github.com/lcpz/awesome-copycats + are the same designs except for the ontop icons, which were slightly modified
@@ -64,8 +67,6 @@ Icons licence: [BY-NC-SA](https://creativecommons.org/licenses/by-nc-sa/4.0/)
 ## Usage examples
 ```lua
 local titlebar = fenetre {
-    title_font = theme.font,
-    title_color = theme.fg_normal,
     title_edit = function()
         -- Remove " - Mozilla Firefox" from the ends of firefox's titles
         local firefox = " - Mozilla Firefox"
@@ -82,8 +83,6 @@ local titlebar = fenetre {
 local titlebar = fenetre {
     max_vert_button = "Shift",
     max_horiz_button = "Control",
-    title_font = theme.font,
-    title_color = theme.fg_normal,
     order = { "max", "ontop", "sticky", "floating", "title" }
 }
 ```
@@ -93,8 +92,6 @@ local titlebar = fenetre {
     rotation = "right",
     max_vert_button = "Shift",
     max_horiz_button = "Control",
-    title_font = theme.font,
-    title_color = theme.fg_normal,
     title_edit = function()
         if title == "calc" then title = "calculator" end
         title = title:upper()
@@ -106,8 +103,6 @@ local titlebar = fenetre {
 ```lua
 local titlebar = fenetre {
     clickable = false,
-    title_font = theme.font,
-    title_color = theme.fg_normal,
     separator = "|",
     order = { "title", "separator", "max", "separator", "ontop", "separator", "sticky", "separator", "floating" }
 }
@@ -115,9 +110,7 @@ local titlebar = fenetre {
 
 ```lua
 local titlebar = fenetre {
-    title_font = theme.font,
     mouse_button = 5,
-    title_color = theme.fg_focus,
     order = { "title", "separator", "max", "floating", "ontop", "sticky", "close" }
 }
 ```
@@ -141,9 +134,8 @@ local titlebar = fenetre {
     sticky_icon = file_name,
     sticky_off_icon = file_name,
     max_icon = file_name,
-    max_partial_icon = file_name,
+    max_vertical_icon = file_name,
     max_off_icon = file_name,
-    title_font = "comic sans 69",
     order = { "title", "max", "ontop", "sticky" }
 }
 ```

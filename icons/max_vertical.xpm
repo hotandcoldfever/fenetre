@@ -1,5 +1,5 @@
 /* XPM */
-static char *max_partial[] = {
+static char *max_vertical[] = {
 /* columns rows colors chars-per-pixel */
 "18 18 2 1 ",
 "  c None",
@@ -11,12 +11,12 @@ static char *max_partial[] = {
 "                  ",
 "                  ",
 "                  ",
-"      ..          ",
-"      ..          ",
-"                  ",
-"                  ",
 "      ..  ..      ",
 "      ..  ..      ",
+"                  ",
+"                  ",
+"      ..          ",
+"      ..          ",
 "                  ",
 "                  ",
 "                  ",

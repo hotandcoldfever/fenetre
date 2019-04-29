@@ -136,15 +136,18 @@ local function fenetre(args)
         elseif part == "max" then
             local max_button = imagebox()
             local max_icon = args.max_icon or icons_path .. "max.xpm"
-            local max_partial_icon = args.max_partial_icon or icons_path .. "max_partial.xpm"
+            local max_horizontal_icon = args.max_horizontal_icon or icons_path .. "max_horizontal.xpm"
+            local max_vertical_icon = args.max_vertical_icon or icons_path .. "max_vertical.xpm"
             local max_off_icon = args.max_off_icon or icons_path .. "max_off.xpm"
 
             local function update_max(c)
                 if c == client.focus then
                     if c.maximized or (c.maximized_vertical and c.maximized_horizontal) then
                         max_button:set_image(max_icon)
-                    elseif c.maximized_vertical or c.maximized_horizontal then
-                        max_button:set_image(max_partial_icon)
+                    elseif c.maximized_horizontal then
+                        max_button:set_image(max_horizontal_icon)
+                    elseif c.maximized_vertical then
+                        max_button:set_image(max_vertical_icon)
                     else
                         max_button:set_image(max_off_icon)
                     end
